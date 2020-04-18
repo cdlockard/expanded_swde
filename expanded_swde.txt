@@ -1,0 +1,17 @@
+This folder contains ground truth annotations for 21 websites from the SWDE corpus. The corresponding webpage HTML files and original ground truth set can be found at:
+https://archive.codeplex.com/?p=swde
+
+The new ground truth annotations in this folder contain annotations of all binary (subject, predicate, object) relationships represented on the websites, in which the subject is the topic entity of the page and the predicate and objects are strings found on the page.
+
+The data is in the format of one json file per website. Each json file contains a dictionary of pages; each page object contains a further dictionary of predicates, each with a list of associated objects.
+
+The predicate string is the text used to indicate the relationship on the website. In the case that more than one predicate string may apply, multiple strings are listed in the predicate string field, delimited with the '|' character. They are ordered from least to most specific. For example, a predicate string might read:
+"Cast and Crew | Producers | Executive Producer"
+This implies that "Executive Producer" is the most specific predicate string associated with that set of objects, while "Producers" and "Cast and Crew" are more general relationships that appeared as well, such as in enclosing section headers.
+
+In the case that strings from more than one text field are required to form a meaningful predicate string, both strings are given, joined by “&&&” to indicate they come from different text fields. 
+
+In the case that a general section header encloses objects of disparate predicates that are not indicated by more specific predicate strings (with the reader expected to infer the semantics from the object type), the general section header is given along with a more specific predicate string assigned by the dataset curators; in this case the more specific name is prepended with a “*” to indicate it does not appear on the webpage.
+
+Any use of this dataset should also cite the original authors of the SWDE corpus:
+Qiang Hao, Rui Cai, Yanwei Pang, and Lei Zhang. "From One Tree to a Forest: a Uniﬁed Solution for Structured Web Data Extraction". in Proc. of the 34th International ACM SIGIR Conference on Research and Development in Information Retrieval (SIGIR 2011), pp.775-784, Beijing, China. July 24-28, 2011.
